@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.25;
 
-import "@openzeppelin/contracts/access/AccessControl.sol";
-import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "openzeppelin-contracts/contracts/access/AccessControl.sol";
+import "openzeppelin-contracts/contracts/utils/ReentrancyGuard.sol";
+import "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 
 /**
  * @title OneToOneSwap
@@ -48,6 +48,7 @@ contract OneToOneSwap is AccessControl, ReentrancyGuard {
     constructor(address _tokenA, address _tokenB) {
         tokenA = _tokenA;
         tokenB = _tokenB;
+        _grantRole(ADMIN_ROLE, msg.sender); // Grant the deployer the admin role
     }
 
     /**
